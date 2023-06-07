@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android = "http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id = "@+id/layout_default_notification"
+    android:layout_width = "fill_parent"
+    android:layout_height = "wrap_content"
+    android:padding = "10dp" >
+
+    <ImageView
+        android:id = "@+id/image"
+        android:layout_width = "40dp"
+        android:layout_height = "40dp"
+        android:layout_alignParentStart = "true"
+        android:layout_marginEnd = "10dp"
+        android:contentDescription = "@string/app_name"
+        android:src = "@drawable/ic_genesis_logo"/>
+
+    <TextView
+        android:id="@+id/header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@id/image"
+        android:maxHeight="28dp"
+        android:paddingEnd="70dp"
+        android:text="@string/GENERAL_DEFAULT_TEXT"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        tools:ignore="RtlSymmetry,TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/body"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_below="@id/header"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@id/image"
+        android:ellipsize="marquee"
+        android:maxLines="2"
+        android:paddingEnd="70dp"
+        android:singleLine="true"
+        android:text="@string/GENERAL_DEFAULT_TEXT"
+        android:textSize="15sp"
+        tools:ignore="RtlSymmetry,TextContrastCheck" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignTop = "@+id/body"
+        android:layout_marginTop="5dp"
+        android:gravity="start"
+        android:orientation="horizontal">
+
+
+        <Button
+            android:id = "@+id/reset"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:textColor="@color/text_color_v2"
+            android:background="@color/clear_alpha"
+            android:text = "@string/DEFAULT_NOTIFICATION_RESET"
+            style="?android:attr/buttonBarButtonStyle" />
+
+
+        <Button
+            android:id = "@+id/exit"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/text_color_v2"
+            android:background="@color/clear_alpha"
+            android:text = "@string/DEFAULT_NOTIFICATION_RESET"
+            style="?android:attr/buttonBarButtonStyle" />
+
+    </LinearLayout>
+</RelativeLayout>

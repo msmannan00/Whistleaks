@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pPopupFindContainer"
+    android:background="@color/c_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layoutDirection="ltr"
+        android:layout_width="match_parent"
+        android:id="@+id/pSuggestionScroll"
+        android:background="@color/c_background"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/c_background"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/pPopupFindNavigationContainer"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:orientation="horizontal"
+                android:paddingBottom="1dp"
+                android:background="@color/c_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/pNavigationContainerInner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:background="@xml/gx_side_item_suggestions"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:onClick="onOpenSearchEngine"
+                    android:orientation="horizontal"
+                    android:paddingEnd="14dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:ignore="RtlSymmetry,UseCompoundDrawables,UselessParent">
+
+                    <ImageView
+                        android:id="@+id/pIcon"
+                        android:layout_width="33dp"
+                        android:layout_height="45dp"
+                        android:layout_marginStart="9dp"
+                        android:layout_marginEnd="5dp"
+                        android:alpha="0.6"
+                        android:contentDescription="@string/GENERAL_TODO"
+                        android:padding="4dp"
+                        android:paddingEnd="4dp"
+                        android:src="@xml/ic_gear"
+                        app:tint="@color/c_navigation_tint"
+                        tools:ignore="RtlSymmetry" />
+
+                    <TextView
+                        android:id="@+id/pSearchEngineHintInvoke"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:paddingTop="13dp"
+                        android:text="@string/GENERAL_SEARCH_ENGINE"
+                        android:textColor="@color/c_text_v1"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:gravity="end"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/pPopupFindClose"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="0dp"
+                        android:background="@xml/gx_ripple_default_round"
+                        android:contentDescription="@string/GENERAL_TODO"
+                        android:onClick="onClearSearchBar"
+                        android:src="@xml/ic_close"
+                        app:tint="@color/c_navigation_tint"
+                        tools:ignore="TouchTargetSizeCheck" />
+
+                    <ImageButton
+                        android:id="@+id/pPopoupFindCopy"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="0dp"
+                        android:background="@xml/gx_ripple_default_round"
+                        android:contentDescription="@string/GENERAL_TODO"
+                        android:onClick="onCopySearch"
+                        android:src="@xml/ic_baseline_clipboard"
+                        android:visibility="gone"
+                        app:tint="@color/c_navigation_tint" />
+
+                    <ImageButton
+                        android:id="@+id/pPopoupFindPaste"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="0dp"
+                        android:background="@xml/gx_ripple_default_round"
+                        android:contentDescription="@string/GENERAL_TODO"
+                        android:onClick="onCopyPaste"
+                        android:src="@xml/ic_baseline_content_paste"
+                        android:visibility="gone"
+                        app:tint="@color/c_navigation_tint" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/pHistListView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/c_background"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/pPopupFindNavigationContainer" />
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

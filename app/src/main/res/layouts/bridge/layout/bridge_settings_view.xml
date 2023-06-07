@@ -1,0 +1,479 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:focusableInTouchMode="true"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_height="match_parent"
+    android:background="@color/c_background">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:isScrollContainer="true"
+        android:id="@+id/pScollview"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:focusableInTouchMode="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingBottom="50dp"
+            android:layout_height="wrap_content">
+            <!-- Title Header -->
+            <LinearLayout
+                android:id="@+id/pBridgeSettingTitleBar"
+                android:layout_width="match_parent"
+                android:layout_marginBottom="0dp"
+                android:focusable="true"
+                android:elevation="8dp"
+                android:background="@color/c_background"
+                android:orientation="horizontal"
+                android:layout_height="52dp">
+
+                <ImageButton
+                    android:id="@+id/pBridgeSettingBack"
+                    android:layout_width="48dp"
+                    android:layout_height="50dp"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@xml/gx_ripple_default_round"
+                    android:contentDescription="@string/GENERAL_TODO"
+                    android:onClick="onClose"
+                    android:src="@xml/ic_arrow_back"
+                    app:tint="@color/c_navigation_tint"
+                    tools:ignore="UsingOnClickInXml,DuplicateSpeakableTextCheck" />
+
+                <TextView
+                    android:id="@+id/pBridgeSettingHeader"
+                    android:textColor="@color/c_text_v1"
+                    android:onClick="onClose"
+                    android:textSize="17sp"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="40"
+                    android:paddingTop="1dp"
+                    android:layout_marginEnd="4dp"
+                    android:gravity="center_vertical|start"
+                    android:textStyle="bold"
+                    android:text="@string/BRIDGE_HEADER"
+                    tools:ignore="UsingOnClickInXml" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+                <ImageView
+                    android:id="@+id/pBridgeSettingInfo"
+                    android:layout_width="50dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@xml/gx_ripple_gray_round_left"
+                    android:contentDescription="@string/GENERAL_TODO"
+                    android:onClick="onOpenInfo"
+                    android:paddingStart="8dp"
+                    android:src="@xml/ic_info"
+                    app:tint="@color/c_header_icon_tint"
+                    tools:ignore="RtlSymmetry,UsingOnClickInXml" />
+
+            </LinearLayout>
+
+            <!-- Title Header -->
+            <LinearLayout
+                android:id="@+id/pBridgeSettingDescriptionHeader"
+                android:layout_width="wrap_content"
+                android:background="@color/clear_alpha"
+                android:layout_marginBottom="0dp"
+                android:focusable="true"
+                android:layout_marginEnd="20dp"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/pDescriptionHeaderText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_weight="40"
+                    android:background="@color/clear_alpha"
+                    android:paddingBottom="10dp"
+                    android:text="@string/BRIDGE_DESC"
+                    android:textColor="#757575"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pBridgeSettingOptions"
+                android:layout_width="match_parent"
+                android:layout_marginEnd="20dp"
+                android:background="@color/clear_alpha"
+                android:layout_marginTop="10dp"
+                android:focusable="true"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/pBridgeSettingAutoCreateText"
+                    android:textSize="14sp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/c_text_short_header"
+                    android:layout_marginStart="15dp"
+                    android:textStyle="bold"
+                    android:text="@string/BRIDGE_AUTO" />
+
+                <TextView
+                    android:id="@+id/pBridgeSettingConfigureSettingText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:background="@color/clear_alpha"
+                    android:text="@string/BRIDGE_AUTO_INFO"
+                    android:textColor="#757575"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:background="@color/clear_alpha"
+                android:layout_marginEnd="10dp"
+                android:paddingEnd="10dp"
+                android:focusable="true"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="-12dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                tools:ignore="RtlSymmetry" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:id="@+id/pTopPanel"
+                android:layout_marginTop="0dp"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:background="@xml/bx_border_left"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginStart="15dp"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="-1dp"
+                        android:elevation="2dp"
+                        android:background="@color/c_white" />
+
+                    <LinearLayout
+                        android:id="@+id/pSearchSettingOption1"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginStart="4dp"
+                        android:background="@xml/gx_ripple_gray"
+                        android:clickable="true"
+                        android:paddingStart="0dp"
+                        android:onClick="onUITrigger"
+                        android:orientation="horizontal"
+                        android:focusable="true"
+                        tools:ignore="RtlSymmetry,UsingOnClickInXml">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="55dp"
+                            android:orientation="vertical">
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:layout_marginTop="18dp"
+                                android:alpha="1"
+                                android:paddingStart="15dp"
+                                android:background="@android:color/transparent"
+                                android:clickable="false"
+                                android:padding="0dp"
+                                android:text="@string/BRIDGE_OBFS4"
+                                android:textAlignment="textStart"
+                                android:textAllCaps="false"
+                                android:textColor="@color/c_text_v1"
+                                android:textSize="15sp"
+                                tools:ignore="RtlSymmetry" />
+
+                        </LinearLayout>
+
+                        <RadioButton
+                            android:id="@+id/pBridgeSettingObfs"
+                            android:layout_width="35dp"
+                            android:layout_height="match_parent"
+                            android:clickable="false"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginStart="50dp"
+                            android:checked="true"
+                            android:buttonTint="@color/c_radio_tint"
+                            android:background="@android:color/transparent"
+                            android:src="@xml/ic_arrow_right"
+                            android:contentDescription="@string/GENERAL_TODO" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="4dp"
+                        android:background="@color/c_topbar_divider" />
+
+                    <LinearLayout
+                        android:id="@+id/pBridgeSettingOption4"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginStart="4dp"
+                        android:background="@xml/gx_ripple_gray"
+                        android:clickable="true"
+                        android:paddingStart="0dp"
+                        android:onClick="onUITrigger"
+                        android:orientation="horizontal"
+                        android:focusable="true"
+                        tools:ignore="RtlSymmetry,UsingOnClickInXml">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="55dp"
+                            android:orientation="vertical">
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="20dp"
+                                android:layout_marginTop="18dp"
+                                android:alpha="1"
+                                android:paddingStart="15dp"
+                                android:background="@android:color/transparent"
+                                android:clickable="false"
+                                android:padding="0dp"
+                                android:text="@string/BRIDGE_SNOWFLAKES"
+                                android:textAlignment="textStart"
+                                android:textAllCaps="false"
+                                android:textColor="@color/c_text_v1"
+                                android:textSize="15sp"
+                                tools:ignore="RtlSymmetry" />
+
+                        </LinearLayout>
+
+                        <RadioButton
+                            android:id="@+id/pBridgeSettingSnowFlakes"
+                            android:layout_width="35dp"
+                            android:layout_height="match_parent"
+                            android:clickable="false"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginStart="50dp"
+                            android:checked="true"
+                            android:buttonTint="@color/c_radio_tint"
+                            android:background="@android:color/transparent"
+                            android:src="@xml/ic_arrow_right"
+                            android:contentDescription="@string/GENERAL_TODO" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="4dp"
+                        android:background="@color/c_topbar_divider" />
+
+                    <LinearLayout
+                        android:id="@+id/pSearchSettingOption2"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:background="@xml/gx_ripple_gray"
+                        android:clickable="true"
+                        android:layout_marginStart="4dp"
+                        android:onClick="onUITrigger"
+                        android:orientation="horizontal"
+                        android:focusable="true"
+                        tools:ignore="RtlSymmetry,UsingOnClickInXml">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="0dp"
+                                android:alpha="1"
+                                android:background="@android:color/transparent"
+                                android:clickable="false"
+                                android:text="@string/BRIDGE_MEEK"
+                                android:padding="0dp"
+                                android:paddingStart="15dp"
+                                android:textAlignment="textStart"
+                                android:textAllCaps="false"
+                                android:textColor="@color/c_text_v1"
+                                android:textSize="15sp"
+                                tools:ignore="RtlSymmetry" />
+
+                        </LinearLayout>
+
+                        <RadioButton
+                            android:layout_width="35dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="10dp"
+                            android:id="@+id/pBridgeSettingBridgeChina"
+                            android:background="@android:color/transparent"
+                            android:layout_marginStart="50dp"
+                            android:src="@xml/ic_arrow_right"
+                            android:buttonTint="@color/c_radio_tint"
+                            android:clickable="false"
+                            android:contentDescription="@string/GENERAL_TODO" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginStart="4dp"
+                        android:background="@color/c_topbar_divider" />
+
+                    <LinearLayout
+                        android:id="@+id/pBridgeSettingOption3"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:background="@xml/gx_ripple_gray"
+                        android:clickable="true"
+                        android:onClick="onUITrigger"
+                        android:orientation="horizontal"
+                        android:focusable="true"
+                        android:layout_marginStart="4dp"
+                        tools:ignore="RtlSymmetry,UsingOnClickInXml">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_marginBottom="5dp"
+                                android:layout_marginStart="0dp"
+                                android:alpha="1"
+                                android:background="@android:color/transparent"
+                                android:clickable="false"
+                                android:text="@string/BRIDGE_MANUAL"
+                                android:padding="0dp"
+                                android:paddingStart="15dp"
+                                android:textAlignment="textStart"
+                                android:textAllCaps="false"
+                                android:textColor="@color/c_text_v1"
+                                android:textSize="15sp"
+                                tools:ignore="RtlSymmetry" />
+
+                        </LinearLayout>
+
+                        <RadioButton
+                            android:layout_width="35dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginEnd="10dp"
+                            android:id="@+id/pBridgeSettingBridgeCustom"
+                            android:background="@android:color/transparent"
+                            android:layout_marginStart="50dp"
+                            android:src="@xml/ic_arrow_right"
+                            android:buttonTint="@color/c_radio_tint"
+                            android:clickable="false"
+                            android:contentDescription="@string/GENERAL_TODO" />
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:elevation="4dp"
+                        android:background="@color/c_topbar_divider" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/pBridgeSettingBottomPanel"
+                    android:layout_width="match_parent"
+                    android:paddingEnd="0dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="0dp"
+                    android:onClick="onUITrigger"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    android:focusableInTouchMode="true"
+                    android:weightSum="15"
+                    tools:ignore="RtlSymmetry,UsingOnClickInXml">
+
+                    <EditText
+                        android:id="@+id/pBridgeSettingCustomPort"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_weight="11"
+                        android:autofillHints=""
+                        android:background="@xml/gx_generic_input"
+                        android:clickable="false"
+                        android:cursorVisible="false"
+                        android:ems="10"
+                        android:focusable="false"
+                        android:hint="@string/BRIDGE_PORT_HINT"
+                        android:inputType="none"
+                        android:maxLines="1"
+                        android:onClick="onUITrigger"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
+                        android:singleLine="true"
+                        android:text=""
+                        android:textColor="@color/c_text_v1"
+                        android:textColorHighlight="@color/c_text_color_highlight_v1"
+                        android:textColorHint="#546E7A"
+                        android:textCursorDrawable="@xml/gx_search_cursor_state"
+                        android:textSize="14.5sp" />
+
+                    <Button
+                        android:id="@+id/pBridgeSettingBridgeRequest"
+                        android:layout_width="0dp"
+                        android:layout_height="48dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="-1dp"
+                        android:layout_weight="4"
+                        android:background="@xml/bx_rounded_corner"
+                        android:onClick="onUITrigger"
+                        android:text="@string/BRIDGE_REQUEST"
+                        android:textColor="@color/c_white"
+                        android:textSize="13sp"
+                        tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/pBridgeSettingCustomBridgeBlocker"
+                    android:layout_width="match_parent"
+                    android:layout_height="63dp"
+                    android:layout_marginTop="-63dp"
+                    android:contentDescription="@string/GENERAL_TODO"
+                    android:onClick="onUITrigger"
+                    tools:ignore="UsingOnClickInXml,ImageContrastCheck">
+
+                </ImageView>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,7 @@
+/.idea/*
+/.gradle/*
+/.safedk/*
+/OrbotLib/*
+/tor-android/*
+/app/orion/release/*
+tor-android/build/*

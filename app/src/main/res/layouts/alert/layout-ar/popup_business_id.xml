@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/landing_ease_blue_splash"
+        android:minHeight="280dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/pSplashScreen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:background="@color/landing_ease_blue_splash"
+            android:clickable="true"
+            android:focusable="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/pInfoPortrait"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:id="@+id/pTopImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:adjustViewBounds="true"
+                    android:background="@color/landing_ease_blue"
+                    android:contentDescription="@string/GENERAL_TODO"
+                    android:scaleX="1.55"
+                    android:scaleY="1.55"
+                    android:src="@drawable/wall2"
+                    android:translationY="-90dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/pImageDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/pImageDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="100dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/GENERAL_TODO"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/glide"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/pTorDisabled"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="-20dp"
+                    android:background="@color/landing_ease_blue"
+                    android:contentDescription="@string/GENERAL_TODO"
+                    android:padding="109dp"
+                    android:translationZ="100dp"
+                    android:visibility="gone" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <View
+                android:id="@+id/pDivider1"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:alpha="0.5"
+                android:background="#264d73"
+                android:elevation="4dp"
+                app:layout_constraintBottom_toTopOf="@+id/pCopyright"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/pCopyright"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0A1727"
+                android:paddingStart="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="10dp"
+                android:text="@string/HOME_COPYRIGHT"
+                android:textColor="#009688"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_margin="10dp"
+        android:id="@+id/pPopupBuinessCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@xml/ax_round_corner_white"
+        android:minHeight="280dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <TextView
+            android:id="@+id/pPopupBuinessCodeDescription"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="18dp"
+            android:alpha="1"
+            android:lineSpacingExtra="3.5dp"
+            android:maxWidth="450dp"
+            android:text="@string/ALERT_BUSINESS_INFO_HEADER"
+            android:textAlignment="textStart"
+            android:textColor="#00796B"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="SmallSp" />
+
+        <TextView
+            android:id="@+id/pBridgeMailPopupDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:alpha="1"
+            android:lineSpacingExtra="3.5dp"
+            android:maxWidth="450dp"
+            android:paddingStart="15dp"
+            android:paddingEnd="15dp"
+            android:text="@string/ALERT_BUSINESS_INFO"
+            android:textAlignment="textStart"
+            android:textColor="#000000"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pPopupBuinessCodeDescription"
+            tools:ignore="SmallSp" />
+
+        <EditText
+            android:id="@+id/pPopupBuinessCodeInput"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="14dp"
+            android:background="@xml/gx_generic_input_create_white"
+            android:elevation="3dp"
+            android:ems="10"
+            android:layoutDirection="ltr"
+            android:inputType="textUri"
+            android:focusedByDefault="true"
+            android:hint="@string/ALERT_BUSINESS_INFO_INPUT_HINT"
+            android:focusableInTouchMode="true"
+            android:importantForAutofill="no"
+            android:maxLines="1"
+            android:padding="7dp"
+            android:paddingStart="11dp"
+            android:paddingEnd="8dp"
+            android:textColor="@color/c_text_v6"
+            android:textColorHighlight="@color/c_text_color_highlight_v2"
+            android:textColorHint="#cccccc"
+            android:textCursorDrawable="@xml/gx_search_cursor_state"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pBridgeMailPopupDescription"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck"
+            tools:targetApi="o" />
+
+        <TextView
+            android:id="@+id/pPopupBuinessCodeError"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="13dp"
+            android:background="@xml/hx_ripple_default_round_bottom_white"
+            android:ellipsize="end"
+            android:gravity="center_vertical | start"
+            android:maxLines="1"
+            android:paddingStart="11dp"
+            android:paddingEnd="15dp"
+            android:textColor="@color/dark_red"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pPopupBuinessCodeInput"
+            tools:ignore="TextContrastCheck" />
+
+        <Button
+            android:id="@+id/pPopupBuinessCodeNext"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:background="@xml/ax_ripple_default_round_bottom"
+            android:text="@string/ALERT_GENERAL_DONE"
+            android:textAllCaps="false"
+            android:textColor="@color/c_white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/pPopupBuinessCodeError"
+            tools:ignore="TouchTargetSizeCheck,TextContrastCheck" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_marginTop="200dp"
+            android:layout_width="match_parent"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/pPopupBuinessCode"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/dtech" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

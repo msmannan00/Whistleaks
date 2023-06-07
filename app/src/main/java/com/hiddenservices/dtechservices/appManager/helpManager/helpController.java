@@ -1,0 +1,251 @@
+package com.hiddenservices.dtechservices.appManager.helpManager;
+
+import android.content.res.Configuration;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ProgressBar;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SimpleItemAnimator;
+
+import com.hiddenservices.dtechservices.appManager.activityContextManager;
+import com.hiddenservices.dtechservices.appManager.homeManager.homeController.homeEnums;
+import com.hiddenservices.dtechservices.constants.constants;
+import com.hiddenservices.dtechservices.constants.enums;
+import com.hiddenservices.dtechservices.constants.status;
+import com.hiddenservices.dtechservices.eventObserver;
+import com.hiddenservices.dtechservices.helperManager.helperMethod;
+import com.hiddenservices.dtechservices.appManager.activityThemeManager;
+import com.hiddenservices.dtechservices.pluginManager.pluginController;
+import com.hiddenservices.dtechservices.pluginManager.pluginEnums;
+import com.hiddenservices.dtechservices.R;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Objects;
+
+import static com.hiddenservices.dtechservices.appManager.helpManager.helpEnums.eHelpModel.M_IS_LOADED;
+
+public class helpController extends AppCompatActivity {
+
+    /*Initializations*/
+    private helpViewController mHelpViewController;
+    private helpModel mHelpModel;
+    private helpAdapter mHelpAdapter;
+    private ProgressBar mProgressBar;
+    private RecyclerView mRecycleView;
+    private ConstraintLayout mRetryContainer;
+    private Button mReloadButton;
+    private editViewController mSearchInput;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        pluginController.getInstance().onLanguageInvoke(Collections.singletonList(this), pluginEnums.eLangManager.M_ACTIVITY_CREATED);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.help_view);
+
+        initializeViews();
+        initializeAppModel();
+        initializeLocalEventHandlers();
+    }
+
+    @Override
+    public void onConfigurationChanged(@NonNull Configuration newConfig) {
+        pluginController.getInstance().onLanguageInvoke(Collections.singletonList(this), pluginEnums.eLangManager.M_ACTIVITY_CREATED);
+
+        if (newConfig.uiMode != getResources().getConfiguration().uiMode) {
+            activityContextManager.getInstance().onResetTheme();
+            activityThemeManager.getInstance().onConfigurationChanged(this);
+        }
+
+        super.onConfigurationChanged(newConfig);
+    }
+
+    private void initializeAppModel() {
+        mHelpModel = new helpModel(this, new helpAdapterCallback());
+        mHelpModel.onTrigger(helpEnums.eHelpModel.M_LOAD_HELP_DATA, null);
+        if ((boolean) mHelpModel.onTrigger(M_IS_LOADED, null)) {
+            mProgressBar.setVisibility(View.GONE);
+        }
+    }
+
+    private void initializeViews() {
+        mHelpViewController = new helpViewController();
+        mProgressBar = findViewById(R.id.pProgressBar);
+        mRecycleView = findViewById(R.id.pRecycleView);
+        mRetryContainer = findViewById(R.id.pRetryContainer);
+        mReloadButton = findViewById(R.id.pReloadButton);
+        mSearchInput = findViewById(R.id.pSearchInput);
+
+        mHelpViewController.initialization(new helpViewCallback(), this, mProgressBar, mRecycleView, mRetryContainer, mReloadButton);
+        mHelpViewController.onTrigger(helpEnums.eHelpViewController.M_INIT_VIEWS, null);
+
+    }
+
+    private void initializeLocalEventHandlers() {
+
+        mRecycleView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+
+            @Override
+            public boolean onInterceptTouchEvent(@NonNull RecyclerView recyclerView, @NonNull MotionEvent motionEvent) {
+                if (motionEvent.getAction() != MotionEvent.ACTION_UP) {
+                    return false;
+                }
+                View child = recyclerView.findChildViewUnder(motionEvent.getX(), motionEvent.getY());
+                if (child != null) {
+                    return false;
+                } else {
+                    mSearchInput.clearFocus();
+                    helperMethod.hideKeyboard(helpController.this);
+                    return true;
+                }
+            }
+
+            @Override
+            public void onTouchEvent(@NonNull RecyclerView recyclerView, @NonNull MotionEvent motionEvent) {
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
+
+        mSearchInput.setEventHandler(new edittextManagerCallback());
+
+        mSearchInput.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                mHelpAdapter.onTrigger(helpEnums.eHelpAdapter.M_INIT_FILTER, Collections.singletonList(mSearchInput.getText().toString()));
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+        });
+    }
+
+
+
+    /*HELPER FUNCTIONS*/
+
+    private void onShowHelperManager(ArrayList<helpDataModel> pHelpListModel) {
+        mHelpAdapter = new helpAdapter(pHelpListModel, this);
+        mRecycleView.setLayoutManager(new LinearLayoutManager(this));
+
+        mRecycleView.setAdapter(mHelpAdapter);
+        ((SimpleItemAnimator) Objects.requireNonNull(mRecycleView.getItemAnimator())).setSupportsChangeAnimations(false);
+        mHelpViewController.onTrigger(helpEnums.eHelpViewController.M_DATA_LOADED, null);
+        mSearchInput.setVisibility(View.VISIBLE);
+        mSearchInput.animate().setDuration(300).alpha(1);
+    }
+
+    /*Ediitext Callback*/
+
+    private class edittextManagerCallback implements eventObserver.eventListener {
+
+        @Override
+        public Object invokeObserver(List<Object> data, Object e_type) {
+
+            if (e_type.equals(homeEnums.eEdittextCallbacks.ON_KEYBOARD_CLOSE)) {
+                mSearchInput.clearFocus();
+                //helperMethod.hideKeyboard(helpController.this);
+            }
+            return null;
+        }
+    }
+
+    /*Helper View Callback*/
+
+    private class helpViewCallback implements eventObserver.eventListener {
+
+        @Override
+        public Object invokeObserver(List<Object> data, Object e_type) {
+            return null;
+        }
+    }
+
+
+    /*Adapter Callbacks*/
+
+    private class helpAdapterCallback implements eventObserver.eventListener {
+
+        @Override
+        public Object invokeObserver(List<Object> data, Object e_type) {
+            if (helpEnums.eHelpModelCallback.M_LOAD_JSON_RESPONSE_SUCCESS.equals(e_type)) {
+                onShowHelperManager((ArrayList<helpDataModel>) data.get(0));
+            } else if (helpEnums.eHelpModelCallback.M_LOAD_JSON_RESPONSE_FAILURE.equals(e_type)) {
+                mHelpViewController.onTrigger(helpEnums.eHelpViewController.M_LOAD_ERROR, null);
+            }
+            return null;
+        }
+    }
+
+    /*UI Redirection*/
+
+    public void onClose(View view) {
+        finish();
+    }
+
+    public void onReloadData(View view) {
+        mHelpViewController.onTrigger(helpEnums.eHelpViewController.M_RELOAD_DATA, null);
+        mHelpModel.onTrigger(helpEnums.eHelpModel.M_LOAD_HELP_DATA, null);
+    }
+
+    public void onOpenHelp(View view) {
+    }
+
+    public void onOpenHelpExternal(View view) {
+
+        if (status.sTheme == enums.Theme.THEME_LIGHT || helperMethod.isDayMode(this)) {
+            if(!status.sSettingIsAppStarted){
+                activityContextManager.getInstance().getHomeController().onStartApplicationNoTorHelp(constants.CONST_GENESIS_HELP_URL_CACHE);
+            }else {
+                activityContextManager.getInstance().getHomeController().onLoadURL(constants.CONST_GENESIS_HELP_URL_CACHE);
+            }
+        } else {
+            if(!status.sSettingIsAppStarted){
+                activityContextManager.getInstance().getHomeController().onStartApplicationNoTorHelp(constants.CONST_GENESIS_HELP_URL_CACHE_DARK);
+            }else {
+                activityContextManager.getInstance().getHomeController().onLoadURL(constants.CONST_GENESIS_HELP_URL_CACHE_DARK);
+            }
+        }
+        finish();
+        activityContextManager.getInstance().onGoHome();
+    }
+
+    /*Local Overrides*/
+
+    @Override
+    protected void onResume() {
+        activityContextManager.getInstance().onCheckPurgeStack();
+        pluginController.getInstance().onLanguageInvoke(Collections.singletonList(this), pluginEnums.eLangManager.M_RESUME);
+        super.onResume();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (mSearchInput.hasFocus()) {
+            mSearchInput.clearFocus();
+        } else {
+            finish();
+        }
+        super.onBackPressed();
+    }
+
+
+}

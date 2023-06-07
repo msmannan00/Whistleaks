@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_gravity="top"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:layout_width="180dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="20dp"
+        android:background="@xml/hx_menu_popup_container"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@xml/hx_menu_popup"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="UselessParent">
+
+            <Button
+                android:id="@+id/pMenuCopy"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@xml/gx_side_item_top"
+                android:gravity="start|center_vertical"
+                android:onClick="onOpenMultipleTabs"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:text="@string/SHARED_RECYCLER_VIEW_OPEN"
+                android:textAllCaps="false"
+                android:textColor="@color/c_text_v1"
+                android:textSize="14.5sp" />
+
+            <Button
+                android:id="@+id/pMenuShare"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@xml/gx_side_item"
+                android:gravity="start|center_vertical"
+                android:onClick="onShareSelectedURL"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:text="@string/SHARED_RECYCLER_VIEW_SHARE"
+                android:textAllCaps="false"
+                android:textColor="@color/c_text_v1"
+                android:textSize="14.5sp" />
+
+            <Button
+                android:id="@+id/pMenuOpenCurrentTab"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@xml/gx_side_item"
+                android:gravity="start|center_vertical"
+                android:onClick="onClearMultipleSelection"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:text="@string/SHARED_RECYCLER_VIEW_CLEAR_LONG_PRESSES"
+                android:textAllCaps="false"
+                android:textColor="@color/c_text_v1"
+                android:textSize="14.5sp" />
+
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/c_view_divier_background_v1" />
+
+            <Button
+                android:id="@+id/pMenuDelete"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@xml/gx_side_item_bottom"
+                android:gravity="start|center_vertical"
+                android:onClick="onDeleteSelected"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:text="@string/SHARED_RECYCLER_VIEW_DELETE"
+                android:textAllCaps="false"
+                android:textColor="#DD2C00"
+                android:textSize="14.5sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

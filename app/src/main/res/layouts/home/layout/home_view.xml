@@ -1,0 +1,992 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pSecureRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/c_white"
+    tools:context="com.hiddenservices.dtechservices.appManager.homeManager.homeController.homeController">
+
+    <View
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/c_background"
+        android:visibility="gone" />
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/pCoordinatorLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/c_white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/adView">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/pAppbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layoutDirection="ltr"
+            android:background="@color/c_white"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:translationZ="3dp"
+            app:layout_scrollFlags="enterAlwaysCollapsed">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/fProfilCollapsing"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                app:layout_scrollFlags="enterAlwaysCollapsed"
+                app:scrimAnimationDuration="10">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/pTopLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/c_white"
+                    android:clipToPadding="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_scrollFlags="enterAlwaysCollapsed">
+
+                    <LinearLayout
+                        android:id="@+id/pTopbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/c_background"
+                        android:elevation="4dp"
+                        android:gravity="start"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:ignore="RtlHardcoded,UselessParent">
+
+                        <LinearLayout
+                            android:id="@+id/pTopBarContainer"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:animateLayoutChanges="true"
+                            android:gravity="start"
+                            android:orientation="horizontal"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="RtlHardcoded,UselessParent">
+
+                            <ImageButton
+                                android:id="@+id/pSearchLogo"
+                                android:layout_width="33dp"
+                                android:layout_height="33dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="14dp"
+                                android:background="@xml/gx_ripple_default_round"
+                                android:contentDescription="@string/GENERAL_TODO"
+                                android:onClick="onLockSecure"
+                                android:padding="6dp"
+                                android:scaleType="fitCenter"
+                                android:src="@xml/ic_baseline_lock"
+                                android:translationZ="10dp"
+                                app:tint="@color/c_lock_tint"
+                                tools:ignore="RtlSymmetry,TouchTargetSizeCheck,DuplicateSpeakableTextCheck,ImageContrastCheck" />
+
+                            <View
+                                android:id="@+id/pSearchDivider"
+                                android:layout_width="1px"
+                                android:layout_height="20dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="3dp"
+                                android:background="@color/c_home_side"
+                                android:translationZ="1dp"
+                                tools:ignore="RtlSymmetry" />
+
+                            <com.hiddenservices.dtechservices.appManager.editTextManager
+                                android:id="@+id/pSearchInput"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="-41dp"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginEnd="5dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_weight="1"
+                                android:animateLayoutChanges="true"
+                                android:background="@xml/gx_generic_input"
+                                android:completionHintView="@layout/hint_view"
+                                android:dropDownAnchor="@id/pSearchEngineBar"
+                                android:ems="10"
+                                android:fadingEdgeLength="20dp"
+                                android:focusableInTouchMode="true"
+                                android:focusedByDefault="false"
+                                android:hint="@string/GENERAL_SEARCH_HINT"
+                                android:imeOptions="flagNoExtractUi"
+                                android:importantForAutofill="no"
+                                android:inputType="textWebEmailAddress"
+                                android:maxLength="1000"
+                                android:maxLines="1"
+                                android:paddingStart="52dp"
+                                android:paddingEnd="15dp"
+                                android:paddingBottom="2dp"
+                                android:popupElevation="0dp"
+                                android:requiresFadingEdge="horizontal"
+                                android:selectAllOnFocus="true"
+                                android:text="@string/GENERAL_HOME_URL"
+                                android:textColor="@color/c_text_v1"
+                                android:textColorHighlight="@color/c_text_color_highlight_v2"
+                                android:textColorHint="@color/c_text_v2"
+                                android:textCursorDrawable="@xml/gx_search_cursor_state"
+                                android:textIsSelectable="false"
+                                android:textSize="16sp"
+                                app:hintAnimationEnabled="false"
+                                tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck,TextContrastCheck"
+                                tools:targetApi="o">
+
+                            </com.hiddenservices.dtechservices.appManager.editTextManager>
+
+                            <ImageButton
+                                android:id="@+id/pVoiceInput"
+                                android:layout_width="36dp"
+                                android:layout_height="36dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginStart="-50dp"
+                                android:layout_marginTop="-1dp"
+                                android:layout_marginEnd="15dp"
+                                android:background="@xml/hx_ripple_default_round"
+                                android:contentDescription="@string/GENERAL_TODO"
+                                android:onClick="onVoiceClick"
+                                android:paddingStart="10dp"
+                                android:paddingEnd="10dp"
+                                android:scaleX="1.1"
+                                android:scaleY="1.1"
+                                android:src="@xml/ic_baseline_keyboard_voice"
+                                android:visibility="invisible"
+                                app:tint="@color/c_text_v8" />
+
+                            <Button
+                                android:id="@+id/pNewTab"
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginTop="-1dp"
+                                android:layout_marginBottom="0dp"
+                                android:background="@xml/gx_generic_tab_button"
+                                android:contentDescription="@string/GENERAL_TODO"
+                                android:scaleType="fitCenter"
+                                android:text="@string/HOME_TAB_TEXT"
+                                android:textColor="@color/c_text_v1"
+                                android:textSize="12.5sp"
+                                android:tint="@color/black"
+                                tools:ignore="TouchTargetSizeCheck" />
+
+                            <ImageButton
+                                android:id="@+id/pMenu"
+                                android:layout_width="35dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="-3dp"
+                                android:layout_marginEnd="0dp"
+                                android:background="@xml/gx_ripple_gray"
+                                android:contentDescription="@string/GENERAL_TODO"
+                                android:onClick="onOpenMenuItem"
+                                android:paddingStart="8dp"
+                                android:paddingTop="15dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="15dp"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/menu_item"
+                                app:tint="@color/c_navigation_tint" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/pTopBarContainerWhistle"
+                            android:layout_width="match_parent"
+                            android:layout_height="60dp"
+                            android:animateLayoutChanges="true"
+                            android:layout_marginRight="37dp"
+                            android:gravity="start"
+                            android:translationZ="15dp"
+                            android:clickable="true"
+                            android:background="@color/c_background"
+                            android:outlineProvider="none"
+                            android:elevation="1dp"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="-60dp"
+                            android:weightSum="10"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="parent"
+                            tools:ignore="RtlHardcoded,UselessParent"
+                            android:baselineAligned="false">
+
+                            <LinearLayout
+                                android:paddingTop="8dp"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="5.5"
+                                android:layout_gravity="center"
+                                android:padding="5dp"
+                                android:weightSum="3"
+                                android:paddingStart="15dp"
+                                android:paddingEnd="15dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/pWhisperCountry"
+                                    android:layout_width="wrap_content"
+                                    android:textColor="@color/c_text_v1"
+                                    android:maxLines="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textSize="12sp"
+                                    android:text="@string/GENERAL_DEFAULT_TEXT" />
+
+                                <TextView
+                                    android:id="@+id/pWhisperIP"
+                                    android:layout_width="wrap_content"
+                                    android:maxLines="1"
+                                    android:textColor="@color/c_text_v1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textSize="12sp"
+                                    android:text="@string/GENERAL_DEFAULT_TEXT" />
+
+                                <TextView
+                                    android:id="@+id/pWhisperCode"
+                                    android:layout_width="wrap_content"
+                                    android:textColor="@color/c_text_v1"
+                                    android:maxLines="1"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:textSize="12sp"
+                                    android:text="@string/GENERAL_DEFAULT_TEXT" />
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_weight="4.5"
+                                android:layout_gravity="center"
+                                android:gravity="right"
+                                android:paddingTop="5dp"
+                                android:weightSum="4"
+                                android:paddingLeft="8dp"
+                                android:paddingRight="8dp"
+                                android:orientation="horizontal">
+
+                                <ImageButton
+                                    android:id="@+id/pWhisperHome"
+                                    android:layout_width="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_height="48dp"
+                                    android:contentDescription="@string/GENERAL_TODO"
+                                    android:minHeight="48dp"
+                                    android:paddingTop="1dp"
+                                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                                    android:onClick="onMenuItemInvoked"
+                                    app:tint="@color/c_icon_tint"
+                                    android:src="@xml/ic_home"/>
+                                <ImageButton
+                                    android:id="@+id/pWhisperTor"
+                                    android:layout_width="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_height="48dp"
+                                    android:paddingTop="6dp"
+                                    android:paddingStart="4dp"
+                                    android:onClick="onMenuItemInvoked"
+                                    android:contentDescription="@string/GENERAL_TODO"
+                                    android:minHeight="48dp"
+                                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                                    app:tint="@color/c_icon_tint"
+                                    android:src="@xml/baseline_shield"/>
+                                <ImageButton
+                                    android:id="@+id/pWhisperIdentity"
+                                    android:layout_width="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_height="48dp"
+                                    android:contentDescription="@string/GENERAL_TODO"
+                                    android:minHeight="48dp"
+                                    android:onClick="onMenuItemInvoked"
+                                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                                    app:tint="@color/c_icon_tint"
+                                    android:src="@xml/ic_baseline_perm_identity"/>
+                                <ImageButton
+                                    android:id="@+id/pWhisperQuit"
+                                    android:layout_width="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_height="48dp"
+                                    android:contentDescription="@string/GENERAL_TODO"
+                                    android:minHeight="48dp"
+                                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                                    android:onClick="onMenuItemInvoked"
+                                    app:tint="@color/c_icon_tint"
+                                    android:src="@xml/ic_baseline_quit"/>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/pTopBarHider"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:alpha="0"
+                        android:background="@color/c_background"
+                        android:clickable="false"
+                        android:contentDescription="@string/GENERAL_TODO"
+                        android:focusable="false"
+                        android:translationZ="4dp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/pNestedScroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:isScrollContainer="true"
+            android:measureAllChildren="true"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/pWebLayoutView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/c_white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/parent">
+
+                <com.hiddenservices.dtechservices.appManager.homeManager.geckoManager.geckoView
+                    android:id="@+id/pWebView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="1"
+                    android:background="@color/c_white"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </com.hiddenservices.dtechservices.appManager.homeManager.geckoManager.geckoView>
+
+                <ProgressBar
+                    android:id="@+id/pProgressBar"
+                    style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:alpha="0"
+                    android:background="@color/clear_alpha"
+                    android:elevation="7dp"
+                    android:max="100"
+                    android:progress="0"
+                    android:progressDrawable="@xml/hox_photon_progress"
+                    android:scaleY="1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:progress="0" />
+
+                <ImageView
+                    android:id="@+id/pNewTabBlocker"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:alpha="0"
+                    android:background="@color/c_background"
+                    android:clickable="true"
+                    android:contentDescription="@string/GENERAL_TODO"
+                    android:focusable="true"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="MissingConstraints" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <FrameLayout
+        android:id="@+id/pSplashLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:visibility="visible">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/pSplashScreen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:animateLayoutChanges="true"
+            android:background="@color/landing_ease_blue_splash"
+            android:clickable="true"
+            android:focusable="true">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/pInfoPortrait"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <ImageView
+                    android:id="@+id/pTopImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:adjustViewBounds="true"
+                    android:background="@color/landing_ease_blue"
+                    android:contentDescription="@string/GENERAL_TODO"
+                    android:scaleX="1.55"
+                    android:scaleY="1.55"
+                    android:src="@drawable/wall2"
+                    android:translationY="-90dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/pImageDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/pImageDivider"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="100dp"
+                    android:adjustViewBounds="true"
+                    android:contentDescription="@string/GENERAL_TODO"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/glide"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/pGenesisLogo"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="100dp"
+                    android:contentDescription="@string/GENERAL_TODO"
+                    android:layoutDirection="ltr"
+                    android:rotationY="@integer/angle_rtl_180"
+                    android:translationZ="3dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/pImageDivider"
+                    app:srcCompat="@drawable/genesis_logo_bordered" />
+
+                <TextView
+                    android:id="@+id/pInfo4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:layoutDirection="ltr"
+                    android:maxHeight="20dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="15dp"
+                    android:text="@string/HOME_DESCRIPTION_TEXT_1"
+                    android:textAlignment="textStart"
+                    android:textColor="#bfbfbf"
+                    android:textFontWeight="5"
+                    android:textSize="12.5sp"
+                    android:textStyle="bold"
+                    android:translationZ="30dp"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toEndOf="@+id/pGenesisLogo"
+                    app:layout_constraintTop_toTopOf="@+id/pGenesisLogo"
+                    tools:ignore="UnusedAttribute" />
+
+                <TextView
+                    android:id="@+id/pInfo5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:layoutDirection="ltr"
+                    android:maxHeight="20dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="15dp"
+                    android:text="@string/HOME_DESCRIPTION_TEXT_3"
+                    android:textAlignment="textStart"
+                    android:textColor="#bfbfbf"
+                    android:textFontWeight="5"
+                    android:textSize="12.5sp"
+                    android:textStyle="bold"
+                    android:translationZ="30dp"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toEndOf="@+id/pGenesisLogo"
+                    app:layout_constraintTop_toBottomOf="@+id/pInfo4"
+                    tools:ignore="UnusedAttribute" />
+
+                <TextView
+                    android:id="@+id/pInfo6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:layoutDirection="ltr"
+                    android:maxHeight="20dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="15dp"
+                    android:text="@string/HOME_DESCRIPTION_TEXT_2"
+                    android:textAlignment="textStart"
+                    android:textColor="#bfbfbf"
+                    android:textFontWeight="5"
+                    android:textSize="12.5sp"
+                    android:textStyle="bold"
+                    android:translationZ="30dp"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toEndOf="@+id/pGenesisLogo"
+                    app:layout_constraintTop_toBottomOf="@+id/pInfo5"
+                    tools:ignore="UnusedAttribute" />
+
+                <ImageView
+                    android:id="@+id/pGenesisSecurityLogo"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="10dp"
+                    android:contentDescription="@string/GENERAL_TODO"
+                    android:layoutDirection="ltr"
+                    android:rotationY="@integer/angle_rtl_180"
+                    android:translationZ="3dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/pGenesisLogo"
+                    app:srcCompat="@drawable/sheild_logo_bordered" />
+
+                <ImageButton
+                    android:id="@+id/pPanicButton"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:adjustViewBounds="true"
+                    android:alpha="0.95"
+                    android:background="@xml/hox_rounded_corner_splash_right"
+                    android:contentDescription="@string/GENERAL_TODO"
+                    android:layoutDirection="ltr"
+                    android:onClick="panicExit"
+                    android:padding="6dp"
+                    android:scaleType="fitCenter"
+                    android:src="@xml/ic_baseline_repair"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+                <TextView
+                    android:id="@+id/pInfo2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:layoutDirection="ltr"
+                    android:maxHeight="20dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="15dp"
+                    android:text="@string/HOME_DESCRIPTION_TEXT_4"
+                    android:textAlignment="textStart"
+                    android:textColor="#bfbfbf"
+                    android:textFontWeight="5"
+                    android:textSize="12.5sp"
+                    android:textStyle="bold"
+                    android:translationZ="30dp"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toEndOf="@+id/pGenesisLogo"
+                    app:layout_constraintTop_toTopOf="@+id/pGenesisSecurityLogo"
+                    tools:ignore="UnusedAttribute" />
+
+                <TextView
+                    android:id="@+id/pInfo3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:layoutDirection="ltr"
+                    android:maxHeight="20dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="15dp"
+                    android:text="@string/HOME_DESCRIPTION_TEXT_5"
+                    android:textAlignment="textStart"
+                    android:textColor="#bfbfbf"
+                    android:textFontWeight="5"
+                    android:textSize="12.5sp"
+                    android:textStyle="bold"
+                    android:translationZ="30dp"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toEndOf="@+id/pGenesisLogo"
+                    app:layout_constraintTop_toBottomOf="@+id/pInfo2"
+                    tools:ignore="UnusedAttribute" />
+
+                <TextView
+                    android:id="@+id/pInfo7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:layoutDirection="ltr"
+                    android:maxHeight="20dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="15dp"
+                    android:text="@string/HOME_DESCRIPTION_TEXT_6"
+                    android:textAlignment="textStart"
+                    android:textColor="#bfbfbf"
+                    android:textFontWeight="5"
+                    android:textSize="12.5sp"
+                    android:textStyle="bold"
+                    android:translationZ="30dp"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toEndOf="@+id/pGenesisLogo"
+                    app:layout_constraintTop_toBottomOf="@+id/pInfo3"
+                    tools:ignore="UnusedAttribute" />
+
+                <ImageView
+                    android:id="@+id/pTorDisabled"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="-20dp"
+                    android:background="@color/landing_ease_blue"
+                    android:contentDescription="@string/GENERAL_TODO"
+                    android:padding="109dp"
+                    android:translationZ="100dp"
+                    android:visibility="gone" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+
+                android:id="@+id/pInfoLandscape"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:id="@+id/pPanicButtonLandscape"
+                    android:layout_width="50dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="20dp"
+                    android:adjustViewBounds="true"
+                    android:alpha="0.95"
+                    android:background="@xml/hox_rounded_corner_splash_right"
+                    android:contentDescription="@string/GENERAL_TODO"
+                    android:layoutDirection="ltr"
+                    android:onClick="panicExit"
+                    android:padding="7dp"
+                    android:scaleType="fitCenter"
+                    android:src="@xml/ic_baseline_repair"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/pGenesisLogoBottom"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="7dp"
+                    android:layout_marginTop="15dp"
+                    android:contentDescription="@string/GENERAL_TODO"
+                    android:layoutDirection="ltr"
+                    android:rotationY="@integer/angle_rtl_180"
+                    android:translationZ="3dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/genesis_logo_bordered" />
+
+                <TextView
+                    android:id="@+id/pInfo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="12dp"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:layoutDirection="ltr"
+                    android:maxHeight="20dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="15dp"
+                    android:text="@string/HOME_DESCRIPTION_TEXT_7"
+                    android:textAlignment="textStart"
+                    android:textColor="#bfbfbf"
+                    android:textFontWeight="5"
+                    android:textSize="12.5sp"
+                    android:textStyle="bold"
+                    android:translationZ="30dp"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toEndOf="@+id/pGenesisLogoBottom"
+                    app:layout_constraintTop_toTopOf="@+id/pGenesisLogoBottom"
+                    tools:ignore="UnusedAttribute" />
+
+                <TextView
+                    android:id="@+id/pInfo8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:layoutDirection="ltr"
+                    android:maxHeight="20dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="15dp"
+                    android:text="@string/HOME_DESCRIPTION_TEXT_8"
+                    android:textAlignment="textStart"
+                    android:textColor="#bfbfbf"
+                    android:textFontWeight="5"
+                    android:textSize="12.5sp"
+                    android:textStyle="bold"
+                    android:translationZ="30dp"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toEndOf="@+id/pGenesisLogoBottom"
+                    app:layout_constraintTop_toBottomOf="@+id/pInfo"
+                    tools:ignore="UnusedAttribute" />
+
+                <TextView
+                    android:id="@+id/pInfo9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:ellipsize="end"
+                    android:gravity="start"
+                    android:layoutDirection="ltr"
+                    android:maxHeight="20dp"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="15dp"
+                    android:text="@string/HOME_DESCRIPTION_TEXT_9"
+                    android:textAlignment="textStart"
+                    android:textColor="#bfbfbf"
+                    android:textFontWeight="5"
+                    android:textSize="12.5sp"
+                    android:textStyle="bold"
+                    android:translationZ="30dp"
+                    android:visibility="visible"
+                    app:layout_constraintStart_toEndOf="@+id/pGenesisLogoBottom"
+                    app:layout_constraintTop_toBottomOf="@+id/pInfo8"
+                    tools:ignore="UnusedAttribute" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Button
+                android:id="@+id/ConnectTor"
+                android:layout_width="170dp"
+                android:layout_height="51dp"
+                android:background="@xml/hox_rounded_corner_splash_no_ripple"
+                android:drawableStart="@drawable/ic_tor"
+                android:layoutDirection="ltr"
+                android:onClick="onStartApplication"
+                android:paddingStart="10dp"
+                android:layout_marginBottom="23dp"
+                android:paddingEnd="10dp"
+                android:layout_marginStart="15dp"
+                android:text="@string/HOME_CONNECT_NO_TOR"
+                android:textAlignment="textStart"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toTopOf="@+id/pCopyright"
+                app:layout_constraintStart_toStartOf="@+id/pInfoLandscape"
+                tools:ignore="RtlSymmetry" />
+
+
+            <View
+                android:id="@+id/pDivider1"
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:alpha="0.5"
+                android:background="#264d73"
+                android:elevation="4dp"
+                app:layout_constraintBottom_toTopOf="@+id/pCopyright"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/pCopyright"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#0A1727"
+                android:paddingStart="15dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="15dp"
+                android:paddingBottom="10dp"
+                android:text="@string/HOME_COPYRIGHT"
+                android:textColor="#009688"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <ImageButton
+                android:id="@+id/pSettings"
+                android:layout_width="53dp"
+                android:layout_height="51dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginBottom="20dp"
+                android:background="@xml/hox_rounded_corner_splash"
+                android:contentDescription="@string/GENERAL_TODO"
+                android:elevation="2dp"
+                android:layoutDirection="ltr"
+                android:onClick="onLoadProxy"
+                android:src="@xml/ic_gear"
+                app:layout_constraintBottom_toTopOf="@+id/pDivider1"
+                app:layout_constraintStart_toEndOf="@+id/ConnectTor"
+                app:tint="@color/black" />
+
+            <ImageButton
+                android:id="@+id/pOrbotLogManager"
+                android:layout_width="53dp"
+                android:layout_height="51dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginBottom="20dp"
+                android:background="@xml/hox_rounded_corner_splash"
+                android:contentDescription="@string/GENERAL_TODO"
+                android:elevation="2dp"
+                android:layoutDirection="ltr"
+                android:onClick="onOrbotLog"
+                android:src="@xml/ic_baseline_bug"
+                app:layout_constraintBottom_toTopOf="@+id/pDivider1"
+                app:layout_constraintStart_toEndOf="@+id/pSettings"
+                app:tint="@color/black" />
+
+            <TextView
+                android:id="@+id/pOrbotLogs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginBottom="20dp"
+                android:alpha="0"
+                android:background="@xml/hx_border_left"
+                android:ellipsize="end"
+                android:gravity="start"
+                android:layoutDirection="ltr"
+                android:maxHeight="250dp"
+                android:maxLines="4"
+                android:minHeight="80dp"
+                android:paddingStart="15dp"
+                android:paddingTop="18dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="15dp"
+                android:text="@string/HOME_LOADING"
+                android:textAlignment="textStart"
+                android:textColor="@color/c_white"
+                android:textFontWeight="5"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/pSettings"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="UnusedAttribute" />
+
+            <ImageView
+                android:id="@+id/pLoadingIcon"
+                android:layout_width="21dp"
+                android:layout_height="21dp"
+                android:contentDescription="@string/GENERAL_TODO"
+                android:layoutDirection="ltr"
+                android:translationZ="100dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toStartOf="@+id/pOrbotLogs"
+                app:layout_constraintTop_toTopOf="@+id/pOrbotLogs"
+                app:srcCompat="@drawable/icon_loading" />
+
+            <ImageView
+                android:id="@+id/pSecureRootBlocker"
+                android:layout_width="257dp"
+                android:layout_height="62dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="13dp"
+                android:background="@color/clear_alpha"
+                android:clickable="false"
+                android:contentDescription="@string/GENERAL_TODO"
+                android:focusable="false"
+                android:layoutDirection="ltr"
+                android:translationZ="3dp"
+                app:layout_constraintBottom_toTopOf="@+id/pDivider1"
+                app:layout_constraintEnd_toEndOf="@+id/pSettings"
+                app:layout_constraintStart_toStartOf="@+id/ConnectTor"
+                app:layout_constraintTop_toBottomOf="@+id/pOrbotLogs" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+
+    <include
+        android:id="@+id/pFindBar"
+        layout="@layout/popup_find"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="8dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/adView" />
+
+    <include
+        android:id="@+id/pSearchEngineBar"
+        layout="@layout/popup_search_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="59dp"
+        android:elevation="8dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
+
+    <ImageView
+        android:id="@+id/pBlockerFullSceen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:alpha="0"
+        android:background="@color/black"
+        android:clickable="true"
+        android:contentDescription="@string/GENERAL_TODO"
+        android:focusable="true"
+        android:visibility="gone"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/mTabFragment"
+        android:name="com.hiddenservices.dtechservices.appManager.tabManager.tabController"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:alpha="0"
+        android:background="@color/c_background"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/adView"
+        app:layout_constraintVertical_weight="1"
+        tools:layout="@layout/tab_view" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

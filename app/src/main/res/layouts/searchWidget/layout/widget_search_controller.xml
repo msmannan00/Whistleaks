@@ -1,0 +1,113 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/widget_margin"
+    android:theme="@style/ThemeOverlay.GenesisAndroid.AppWidgetContainer">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="20dp"
+        android:animateLayoutChanges="true"
+        android:layoutDirection="ltr"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="true"
+        android:gravity="start"
+        android:minWidth="187dp"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
+
+        <ImageButton
+            android:id="@+id/pSearchLogo"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="2.5dp"
+            android:background="@color/clear_alpha"
+            android:clickable="false"
+            android:contentDescription="@string/GENERAL_TODO"
+            android:focusable="false"
+            android:padding="6dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/genesis"
+            android:translationZ="1dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="-53dp"
+            android:layout_marginEnd="1dp"
+            android:orientation="horizontal"
+            android:background="@xml/gx_generic_input_white">
+
+            <TextView
+                android:id="@+id/pSearchInputWidget"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:background="@xml/gx_generic_input_white"
+                android:paddingStart="60dp"
+                android:paddingTop="15dp"
+                android:paddingEnd="15dp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:text="@string/GENERAL_HIDDEN_WEB"
+                android:textColor="#737373"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/pVoiceInput"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="-53dp"
+            android:background="@color/clear_alpha"
+            android:clickable="false"
+            android:contentDescription="@string/GENERAL_TODO"
+            android:focusable="false"
+            android:padding="13dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/mike"
+            android:translationZ="1dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="49dp"
+        android:layout_marginTop="20dp"
+        android:animateLayoutChanges="true"
+        android:focusableInTouchMode="true"
+        android:gravity="start"
+        android:minWidth="187dp"
+        android:orientation="horizontal"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/pTextInvoker"
+            android:layout_width="0dp"
+            android:layout_height="49dp"
+            android:layout_weight="1"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:contentDescription="@string/GENERAL_TODO"
+            android:focusable="true"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+
+        <ImageView
+            android:id="@+id/pVoiceInvoker"
+            android:layout_width="55dp"
+            android:background="?android:attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:layout_height="49dp"
+            android:contentDescription="@string/GENERAL_TODO" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:shortcutId="CONST_SHORTCUT_RESTART"
+        android:enabled="true"
+        android:icon="@xml/ic_baseline_shortcut_erase_back"
+        android:shortcutShortLabel="@string/SHORTCUT_OPEN"
+        android:shortcutLongLabel="@string/SHORTCUT_OPEN_LONG">
+        <intent
+            android:action="erase"
+            android:targetPackage="com.hiddenservices.dtechservices"
+            android:targetClass="com.hiddenservices.dtechservices.appManager.externalCommandManager.externalShortcutController">
+            <extra
+                android:name="EXTERNAL_SHORTCUT_COMMAND"
+                android:value="EXTERNAL_SHORTCUT_COMMAND_RESTART" />
+        </intent>
+    </shortcut>
+    <shortcut
+        android:shortcutId="CONST_SHORTCUT_ERASE_OPEN"
+        android:enabled="true"
+        android:icon="@xml/ic_baseline_shortcut_add_new_back"
+        android:shortcutShortLabel="@string/SHORTCUT_ERASE_AND_OPEN_SHORT_LABEL"
+        android:shortcutLongLabel="@string/SHORTCUT_ERASE_AND_OPEN_LONG_LABEL">
+        <intent
+            android:action="erase"
+            android:targetPackage="com.hiddenservices.dtechservices"
+            android:targetClass="com.hiddenservices.dtechservices.appManager.externalCommandManager.externalShortcutController">
+            <extra
+                android:name="EXTERNAL_SHORTCUT_COMMAND"
+                android:value="EXTERNAL_SHORTCUT_COMMAND_ERASE_OPEN" />
+        </intent>
+    </shortcut>
+    <shortcut
+        android:shortcutId="CONST_SHORTCUT_ERASE"
+        android:enabled="true"
+        android:icon="@xml/ic_baseline_shortcut_cross_back"
+        android:shortcutShortLabel="@string/SHORTCUT_ERASE_SHORT_LABEL"
+        android:shortcutLongLabel="@string/SHORTCUT_ERASE_LONG_LABEL">
+        <intent
+            android:action="erase"
+            android:targetPackage="com.hiddenservices.dtechservices"
+            android:targetClass="com.hiddenservices.dtechservices.appManager.externalCommandManager.externalShortcutController">
+            <extra
+                android:name="EXTERNAL_SHORTCUT_COMMAND"
+                android:value="EXTERNAL_SHORTCUT_COMMAND_ERASE" />
+        </intent>
+    </shortcut>
+</shortcuts>
